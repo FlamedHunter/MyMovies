@@ -12,11 +12,17 @@ import { useEffect } from 'react';
 import { loadLikedMovies } from './components/favourites/favouritesSlice';
 import { VideoPlayer } from './components/videoplayer/VideoPlayer';
 import { MoviePlayer } from './components/videoplayer/MoviePlayer';
+import * as NavigationBar from 'expo-navigation-bar';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
   useEffect(()=>{
+      const setnavigation = async ()=>{
+          await NavigationBar.setVisibilityAsync('hidden')
+      }
+      setnavigation()
       store.dispatch(loadLikedMovies());
   })
   return (
@@ -29,10 +35,9 @@ export default function App() {
 
 
 const AppContainer = ()=>{
-  
     return (
       <NavigationContainer>
-        <StatusBar style='light' translucent={true} backgroundColor='rgba(0,0,0,0.15)' />
+        <StatusBar style='light' translucent={true} backgroundColor='rgba(0,0,0,0.15)' hidden = {true}/>
         <Stack.Navigator>
           <Stack.Screen name = "Home" component={Home} options={{ headerShown: false }}/>
           <Stack.Screen name="Search" component={Search} options={{ headerShown: false }}/>

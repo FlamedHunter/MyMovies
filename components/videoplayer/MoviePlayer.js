@@ -6,7 +6,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch,useSelector } from 'react-redux';
 import { addMovie, removeMovie, saveLikedMovies } from '../favourites/favouritesSlice';
-import { Picker } from "@react-native-picker/picker";
 
 const players = ['F','B','I','S','FM','L','FX','CC','C','E','V','D']
 
