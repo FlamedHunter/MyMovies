@@ -67,3 +67,80 @@ export async function fetchUpcomingMovies() {
     return [];
   }
 }
+
+
+
+
+
+
+
+
+export async function fetchTopTv() {
+  const apiKey = 'c3e56830b46f646e155452cc49256e1c';
+  const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error:', error.message);
+    return [];
+  }
+}
+
+
+export async function fetchLatestTv() {
+  const apiKey = 'c3e56830b46f646e155452cc49256e1c';
+  const url = `https://api.themoviedb.org/3/tv/now_playing?api_key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error:', error.message);
+    return [];
+  }
+}
+
+
+export async function fetchPopularTv() {
+  const apiKey = 'c3e56830b46f646e155452cc49256e1c';
+  const url = `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error:', error.message);
+    return [];
+  }
+}
+
+export async function fetchUpcomingTv() {
+  const apiKey = 'c3e56830b46f646e155452cc49256e1c';
+  const url = `https://api.themoviedb.org/3/tv/upcoming?api_key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error:', error.message);
+    return [];
+  }
+}

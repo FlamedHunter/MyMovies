@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, ScrollView, Pressable, ImageBackground } from "react-native";
+import { StyleSheet, Text, ScrollView, Pressable, ImageBackground,Switch,View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import {Dimensions} from 'react-native';
 import { fetchTopMovies,fetchLatestMovies,fetchPopularMovies,fetchUpcomingMovies } from '../api/HomeMovies'
 import { useState,useEffect } from "react";
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -14,6 +14,7 @@ const windowHeight = Dimensions.get('window').height;
 export default Home = ()=>{
     const dispatch = useDispatch()
     const navigation = useNavigation();
+    const type = useSelector(state=>state.type.selecttype)
     const [topMovies, setTopMovies] = useState([]);
     const [nowplaying, setNowPlaying] = useState([]);
     const [popular,setPopular] = useState([]);
@@ -56,6 +57,16 @@ export default Home = ()=>{
                 />
 
                 <Text style = {homestyles.homeheading}>What would you like to watch?</Text>
+
+                <View style={homestyles.togglebox}>
+                    <Switch
+                        trackColor={{false: '#767577', true: '#81b0ff'}}
+                        // thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                        ios_backgroundColor="#3e3e3e"
+                        // onValueChange={toggleSwitch}
+                        // value={isEnabled}
+                    />
+                </View>
 
                 <Text style = {homestyles.categoriestext}>Top Movies</Text>
                 <ScrollView horizontal style = {{marginLeft:5, zIndex:2, marginBottom:30}}  showsHorizontalScrollIndicator={false}>
@@ -143,5 +154,10 @@ const homestyles = StyleSheet.create({
         marginLeft:10,
         marginRight:10,
         zIndex:3,
+    },
+    togglebox:{
+        position:'absolute',
+        alignItems:'center',
+        justifyContent:'center'
     }
 })
