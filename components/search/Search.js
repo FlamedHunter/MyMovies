@@ -6,8 +6,6 @@ import {Dimensions} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from "@expo/vector-icons";
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 export const Search = ()=>{
     const navigation = useNavigation();
@@ -56,7 +54,7 @@ export const Search = ()=>{
                 <Pressable style={searchstyles.searchIcon} onPress={()=>searchMovies(search)}>
                     <FontAwesome name='search' size={22} color={'white'}/>
                 </Pressable>
-                <TextInput value={search} onChangeText={text => setSearch(text)} onSubmitEditing ={()=>searchMovies(search)} style = {searchstyles.searchbox}/>
+                <TextInput placeholder="Search for a movie" value={search} onChangeText={text => setSearch(text)} onSubmitEditing ={()=>searchMovies(search)} style = {searchstyles.searchbox}/>
                 <ScrollView style={searchstyles.search}>
                     <Text style = {{color:'white'}}>No Movies Found</Text>
                 </ScrollView>
